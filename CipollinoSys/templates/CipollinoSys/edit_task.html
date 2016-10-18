@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+{# Load the tag library #}
+{% load bootstrap3 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Новое задание</title>
+    <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+
+</head>
+<body>
+        <div class="page-header">
+              <h1><a href="/">#compiti</a></h1>
+             <h2> Вы зашли как {{ request.user }} <a class = "button" href="{% url 'log_in'  %}">Выйти</a></h2>
+
+        </div>
+
+        <div class="content container">
+            <h2>Редактировать задачу</h2>
+            <div class="row">
+                <div class="col-md-8">
+
+        <form method="POST" class="task-form">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            <button type="submit" class="save btn btn-default">Сохранить</button>
+        </form>
+
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+</body>
+</html>
